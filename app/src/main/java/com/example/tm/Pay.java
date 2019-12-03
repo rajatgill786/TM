@@ -9,11 +9,13 @@ import android.widget.Toast;
 import com.example.tm.Database.Database;
 
 public class Pay extends AppCompatActivity {
-    Database db= new Database(this);
+    Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
+
+        db= new Database(this);
     }
 
 

@@ -1,69 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pay">
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_x="5dp"
-        android:layout_y="0dp"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="282dp">
-
-        <LinearLayout
+        android:layout_height="wrap_content">
+        <AbsoluteLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/editText4"
+    <Button
+        android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="92dp"
-        android:layout_y="137dp"
+        android:layout_x="246dp"
+        android:layout_y="244dp"
+        android:text="Button" />
+
+    <RadioButton
+        android:id="@+id/radioButton12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="250dp"
+        android:layout_y="670dp"
+        android:text="December" />
+
+    <RadioButton
+        android:id="@+id/radioButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="244dp"
+        android:layout_y="586dp"
+        android:text="October" />
+
+    <RadioButton
+        android:id="@+id/radioButton8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="140dp"
+        android:layout_y="672dp"
+        android:text="August" />
+
+    <RadioButton
+        android:id="@+id/radioButton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="137dp"
+        android:layout_y="629dp"
+        android:text="July" />
+
+    <RadioButton
+        android:id="@+id/radioButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="137dp"
+        android:layout_y="542dp"
+        android:text="May" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="586dp"
+        android:text="February" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="108dp"
+        android:layout_y="71dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="137dp" />
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="119dp" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="95dp"
-        android:layout_y="221dp"
+        android:layout_x="108dp"
+        android:layout_y="139dp"
         android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="238dp" />
-
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="93dp"
-        android:layout_y="307dp"
-        android:ems="10"
-        android:hint="Month"
+        android:hint="Phone number"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="325dp" />
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="143dp"
+        android:layout_height="36dp"
+        android:layout_x="12dp"
+        android:layout_y="488dp"
+        android:text="Months" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="389dp"
+        android:layout_height="148dp"
+        android:layout_x="9dp"
+        android:layout_y="324dp"
+        android:text="TextView" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="26dp"
+        android:layout_y="541dp"
+        android:text="January" />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="21dp"
+        android:layout_y="627dp"
+        android:text="March" />
+
+    <RadioButton
+        android:id="@+id/radioButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="672dp"
+        android:text="April" />
+
+    <RadioButton
+        android:id="@+id/radioButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="137dp"
+        android:layout_y="587dp"
+        android:text="June" />
+
+    <RadioButton
+        android:id="@+id/radioButton9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="243dp"
+        android:layout_y="542dp"
+        android:text="September" />
+
+    <RadioButton
+        android:id="@+id/radioButton11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="248dp"
+        android:layout_y="628dp"
+        android:text="November" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="147dp"
-        android:layout_y="407dp"
-        android:text="Submit"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="426dp" />
+        android:layout_x="18dp"
+        android:layout_y="240dp"
+        android:text="CHECK" />
+        </AbsoluteLayout>
+</ScrollView>
 
-</RelativeLayout>
+</AbsoluteLayout>

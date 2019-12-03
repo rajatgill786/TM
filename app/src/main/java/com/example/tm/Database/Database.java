@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
     public static final String DatabaseName="TM.db";
@@ -23,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
         String CreateTableTStudent="create table Student(Name Text not null, Phone_no Integer not null,Class Text not null,JoiningDate Text, Primary Key(Name,Phone_no));";
         db.execSQL(CreateTableTStudent);
 
-        String CreateTableFee="Create table Fee(Name Text not null, Phone_no Integer not null,fee Integer not null ,Months Text ,Foreign Key(Name,Phone_no) references Student(Name,Phone_no));";
+        String CreateTableFee="Create table Fee(Name Text not null, Phone_no Integer not null,fee Integer not null ,Year Text not null,Months Text ,Foreign Key(Name,Phone_no) references Student(Name,Phone_no));";
         db.execSQL(CreateTableFee);
     }
 
@@ -42,25 +46,41 @@ public class Database extends SQLiteOpenHelper {
         db.insert("Student",null,cv);
     }
 
+    public String getMonth(String name, Long ph){
+        String m="";//stores month
+        String mt= " ";//stores  date
+        String Query="select JoiningDate  from Student where Name = '"+name +"'AND Phone_no = '"+ ph+"'";
+        Cursor cr=db.rawQuery(Query,null);
+        while(cr.moveToNext())
+            mt  = cr.getString(0);
 
-    public void payFee(String name,Long ph, int fee){
+        String ar[]=mt.split("-");
+        m=ar[1];
+
+        return m;
+    }
+
+    public void payFee(String name,Long ph, int fee,String yr,String month){
         ContentValues cv= new ContentValues();
         cv.put("Name",name);
         cv.put("Phone_no",ph);
         cv.put("fee",fee);
-        db.insert("fee",null,cv);
+        cv.put("Year",yr);
+        cv.put("Months",month);
+        db.insert("Fee",null,cv);
     }
-public String fetchName(){
-   // db.getReadableDatabase();
-    String n="";
-    Long ph=0L;
-    String Query="select name  from Student";
-    Cursor cr=db.rawQuery(Query,null);
-    while(cr.moveToNext())
-        n = cr.getString(0);
 
-    return n;
-}
+    public String fetchName(){
+   // db.getReadableDatabase();
+        String n="";
+        Long ph=0L;
+        String Query="select name  from Student";
+        Cursor cr=db.rawQuery(Query,null);
+        while(cr.moveToNext())
+            n = cr.getString(0);
+
+       return n;
+    }
 
 
     public Long fetchPh(){
