@@ -14,13 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="246dp"
-        android:layout_y="244dp"
-        android:text="Button" />
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="246dp"
+                android:layout_y="244dp"
+                android:text="PAY" />
 
     <RadioButton
         android:id="@+id/radioButton12"
@@ -71,7 +71,7 @@
         android:text="February" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="108dp"
@@ -83,7 +83,7 @@
         tools:layout_editor_absoluteY="119dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="108dp"
@@ -111,7 +111,7 @@
         android:text="TextView" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="26dp"
@@ -159,7 +159,7 @@
         android:text="November" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="18dp"

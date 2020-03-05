@@ -5,15 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Database extends SQLiteOpenHelper {
     public static final String DatabaseName="TM.db";
     public static final String TStudent="Sudent";
     public SQLiteDatabase db;
+
     private Context context;
     public Database(Context context) {
         super(context, DatabaseName,null,1);
@@ -70,11 +69,12 @@ public class Database extends SQLiteOpenHelper {
         db.insert("Fee",null,cv);
     }
 
-    public String fetchName(){
+    public String fetchName(String name,Long p){
    // db.getReadableDatabase();
         String n="";
         Long ph=0L;
-        String Query="select name  from Student";
+       // String Query="select name  from Student where  ";
+        String Query="select name  from Student where Name = '"+name +"'AND Phone_no = '"+ p+"'";
         Cursor cr=db.rawQuery(Query,null);
         while(cr.moveToNext())
             n = cr.getString(0);
@@ -83,11 +83,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public Long fetchPh(){
+    public Long fetchPh(String name,Long p){
         // db.getReadableDatabase();
 
         Long ph=0L;
-        String Query="select phone_no from Student";
+        //String Query="select phone_no from Student";
+        String Query="select  Phone_no from Student where Name = '"+name +"'AND Phone_no = '"+ p+"'";
         Cursor cr=db.rawQuery(Query,null);
         while(cr.moveToNext())
             ph=cr.getLong(0);

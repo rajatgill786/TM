@@ -30,7 +30,7 @@ public class login extends AppCompatActivity {
     private void Login()
     {
         EditText editText1=(EditText)findViewById(R.id.editText);
-        EditText editText2=(EditText)findViewById(R.id.editText2);
+        EditText editText2=(EditText)findViewById(R.id.Phone);
         String id=editText1.getText().toString();
         String pass=editText2.getText().toString();
         Toast.makeText(this,""+id + "  "+pass,Toast.LENGTH_SHORT).show();
