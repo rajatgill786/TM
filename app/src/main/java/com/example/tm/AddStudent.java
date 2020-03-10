@@ -52,19 +52,27 @@ public class AddStudent extends AppCompatActivity {
         String name= editText1.getText().toString().trim();
         Long ph=Long.parseLong(editText2.getText().toString().trim());
         String Class= editText3.getText().toString();
-    /*    if(py.ifRecordExists(name,ph)){
-            Toast.makeText(this,"Student already exist",Toast.LENGTH_SHORT).show();
-        }else {*/
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy ");// MM for month and mm is for minute
-        Date obj= new Date();
-        String date= df.format(obj);
-        Toast.makeText(this,"Date of joining is : " + date, Toast.LENGTH_SHORT).show();
+       // Long p=111L;
+
+
+        Toast.makeText(this,"Date of joining is : " + getCurrentDate(), Toast.LENGTH_SHORT).show();
         Database db= new Database(this);
         db.getWritableDatabase();
 
-            db.addStudent(name, ph, Class, date);
-            String m = db.getMonth(name, ph);
-            Toast.makeText(this, "Month of joining is : " + m, Toast.LENGTH_SHORT).show();
-      //  }
+            db.addStudent(name, ph, Class, getCurrentDate());
+
+        /*
+         * For first data insertion in Fee table
+          */
+            db.payFee(name,ph,"null");
+        //   db.addStudent("111",p,"6","09-01-1-2020");
+        Toast.makeText(this,"Inserted Successfully",Toast.LENGTH_SHORT).show();
+    }
+
+    public String getCurrentDate(){
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy ");// MM for month and mm is for minute
+        Date obj= new Date();
+        String date= df.format(obj);
+        return date;
     }
 }

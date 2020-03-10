@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 public class Options extends AppCompatActivity {
-
+    Pay RButtons;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+        RButtons=new Pay();
         onClickAdd();
         onClickDelete();
         onClickPay();
@@ -55,6 +56,7 @@ public class Options extends AppCompatActivity {
                 startDelete();
             }
         });
+
     }
 
 

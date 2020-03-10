@@ -18,11 +18,11 @@
                 android:id="@+id/pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_x="246dp"
-                android:layout_y="244dp"
+                android:layout_x="149dp"
+                android:layout_y="417dp"
                 android:text="PAY" />
 
-    <RadioButton
+            <RadioButton
         android:id="@+id/radioButton12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,15 +102,15 @@
         android:layout_y="488dp"
         android:text="Months" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="389dp"
-        android:layout_height="148dp"
-        android:layout_x="9dp"
-        android:layout_y="324dp"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="389dp"
+                android:layout_height="44dp"
+                android:layout_x="16dp"
+                android:layout_y="499dp"
+                android:text="TextView" />
 
-    <RadioButton
+            <RadioButton
         android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,13 +158,34 @@
         android:layout_y="628dp"
         android:text="November" />
 
-    <Button
-        android:id="@+id/check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="18dp"
-        android:layout_y="240dp"
-        android:text="CHECK" />
+            <Button
+                android:id="@+id/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="143dp"
+                android:layout_y="213dp"
+                android:text="CHECK" />
+
+            <EditText
+                android:id="@+id/MonthYear"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_x="60dp"
+                android:layout_y="333dp"
+                android:ems="10"
+                android:hint="Last Month,year upto which paying "
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/LastPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="100dp"
+                android:layout_y="276dp"
+                android:ems="10"
+                android:hint="LastPaid"
+                android:inputType="textPersonName"
+                android:text="Name" />
         </AbsoluteLayout>
 </ScrollView>
 

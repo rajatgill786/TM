@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.util.Log;
 
 
 public class Database extends SQLiteOpenHelper {
@@ -14,6 +14,7 @@ public class Database extends SQLiteOpenHelper {
     public SQLiteDatabase db;
 
     private Context context;
+    String CreateTableTStudent,CreateTableFee;
     public Database(Context context) {
         super(context, DatabaseName,null,1);
         db=this.getWritableDatabase();
@@ -23,18 +24,29 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CreateTableTStudent="create table Student(Name Text not null, Phone_no Integer not null,Class Text not null,JoiningDate Text, Primary Key(Name,Phone_no));";
+        CreateTableTStudent="create table Student(Name Text not null, Phone_no Integer not null,Class Text not null,JoiningDate Text, Primary Key(Name,Phone_no));";
         db.execSQL(CreateTableTStudent);
 
-        String CreateTableFee="Create table Fee(Name Text not null, Phone_no Integer not null,fee Integer not null ,Year Text not null,Months Text ,Foreign Key(Name,Phone_no) references Student(Name,Phone_no));";
+        CreateTableFee="Create table Fee(Name Text not null, Phone_no Integer not null,LastMonthYear Text not null ,Foreign Key(Name,Phone_no) references Student(Name,Phone_no));";
         db.execSQL(CreateTableFee);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        switch(oldVersion){
+            case 1:
+                db.execSQL(CreateTableTStudent);
+            case 2:
+                db.execSQL(CreateTableFee);
+        }
     }
-
+    public void payFee(String name,Long ph, String monthYear){
+        ContentValues cv= new ContentValues();
+        cv.put("Name",name);
+        cv.put("Phone_no",ph);
+        cv.put("LastMonthYear",monthYear);
+        db.insert("Fee",null,cv);
+    }
 
     public void addStudent(String name,Long ph,String Class,String JoiningDate){
         ContentValues cv= new ContentValues();
@@ -43,57 +55,48 @@ public class Database extends SQLiteOpenHelper {
         cv.put("Class",Class);
         cv.put("JoiningDate",JoiningDate);
         db.insert("Student",null,cv);
+
     }
 
-    public String getMonth(String name, Long ph){
-        String m="";//stores month
+    public String[] getDayMonth(String name, Long ph){
         String mt= " ";//stores  date
+        String month="";//stores month
+        String day="";//stores day of month
         String Query="select JoiningDate  from Student where Name = '"+name +"'AND Phone_no = '"+ ph+"'";
         Cursor cr=db.rawQuery(Query,null);
         while(cr.moveToNext())
             mt  = cr.getString(0);
 
-        String ar[]=mt.split("-");
-        m=ar[1];
-
-        return m;
+        String[] ar =mt.split("-");
+        day=ar[0];
+        month=ar[1];
+        return new String[] {day,month};
     }
 
-    public void payFee(String name,Long ph, int fee,String yr,String month){
-        ContentValues cv= new ContentValues();
-        cv.put("Name",name);
-        cv.put("Phone_no",ph);
-        cv.put("fee",fee);
-        cv.put("Year",yr);
-        cv.put("Months",month);
-        db.insert("Fee",null,cv);
-    }
-
-    public String fetchName(String name,Long p){
-   // db.getReadableDatabase();
-        String n="";
+    /*
+    *This method fetches whole data of Fee table
+     */
+    public String[] FeeData(String name,Long p){
+        String n,m,phone;
+        n=m="";
         Long ph=0L;
-       // String Query="select name  from Student where  ";
-        String Query="select name  from Student where Name = '"+name +"'AND Phone_no = '"+ p+"'";
+        String Query="select * from Fee where Name = '"+name +"'AND Phone_no = '"+ p+"'";
         Cursor cr=db.rawQuery(Query,null);
-        while(cr.moveToNext())
+        while(cr.moveToNext()) {
             n = cr.getString(0);
-
-       return n;
+            ph=cr.getLong(1);
+            m=cr.getString(2);
+        }
+        phone=ph.toString();
+            return new String[]{n, phone, m};
     }
 
+    public void updateFee(String name,Long phone,String LastMY){
 
-    public Long fetchPh(String name,Long p){
-        // db.getReadableDatabase();
-
-        Long ph=0L;
-        //String Query="select phone_no from Student";
-        String Query="select  Phone_no from Student where Name = '"+name +"'AND Phone_no = '"+ p+"'";
-        Cursor cr=db.rawQuery(Query,null);
-        while(cr.moveToNext())
-            ph=cr.getLong(0);
-
-        return ph;
+        String StringPhone=Long.toString(phone);
+        ContentValues cv= new ContentValues();
+        cv.put("LastMonthYear",LastMY);
+        db.update("Fee",cv,"Name = ? AND Phone_no = ?",new String[]{name,StringPhone});
     }
 }
 
