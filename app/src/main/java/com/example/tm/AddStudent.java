@@ -52,7 +52,7 @@ public class AddStudent extends AppCompatActivity {
         String name= editText1.getText().toString().trim();
         Long ph=Long.parseLong(editText2.getText().toString().trim());
         String Class= editText3.getText().toString();
-       // Long p=111L;
+        Long p=111L;
 
 
         Toast.makeText(this,"Date of joining is : " + getCurrentDate(), Toast.LENGTH_SHORT).show();
@@ -60,6 +60,7 @@ public class AddStudent extends AppCompatActivity {
         db.getWritableDatabase();
 
             db.addStudent(name, ph, Class, getCurrentDate());
+        db.addStudent("100",p,"8","20/03/2019");
 
         /*
          * For first data insertion in Fee table

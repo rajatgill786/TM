@@ -8,13 +8,12 @@ import android.os.Bundle;
 import com.example.tm.Database.Database;
 
 public class MainActivity extends AppCompatActivity {
-
+public static Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Database db= new Database(this);
+        db= new Database(this);
 
         Intent i= new Intent(this,login.class);
         startActivity(i);

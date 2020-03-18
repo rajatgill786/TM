@@ -7,17 +7,21 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.tm.AddStudent;
+
 
 public class Database extends SQLiteOpenHelper {
     public static final String DatabaseName="TM.db";
     public static final String TStudent="Sudent";
     public SQLiteDatabase db;
+    AddStudent add;
 
     private Context context;
     String CreateTableTStudent,CreateTableFee;
     public Database(Context context) {
         super(context, DatabaseName,null,1);
         db=this.getWritableDatabase();
+        add= new AddStudent();
         this.context=context;
     }
 
@@ -58,36 +62,30 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public String[] getDayMonth(String name, Long ph){
-        String mt= " ";//stores  date
-        String month="";//stores month
-        String day="";//stores day of month
-        String Query="select JoiningDate  from Student where Name = '"+name +"'AND Phone_no = '"+ ph+"'";
-        Cursor cr=db.rawQuery(Query,null);
-        while(cr.moveToNext())
-            mt  = cr.getString(0);
-
-        String[] ar =mt.split("-");
-        day=ar[0];
-        month=ar[1];
-        return new String[] {day,month};
-    }
-
     /*
     *This method fetches whole data of Fee table
      */
     public String[] FeeData(String name,Long p){
+        Log.i("ANA ", "================================================first ");
         String n,m,phone;
         n=m="";
+        Log.i("ANA ", "================================================Second ");
         Long ph=0L;
+        Log.i("ANA ", "================================================ibefore ");
         String Query="select * from Fee where Name = '"+name +"'AND Phone_no = '"+ p+"'";
+        Log.i("ANA ", "================================================after");
         Cursor cr=db.rawQuery(Query,null);
+        Log.i("ANA ", "================================================Cursor ");
         while(cr.moveToNext()) {
             n = cr.getString(0);
             ph=cr.getLong(1);
             m=cr.getString(2);
         }
+        Log.i("ANA ", "================================================after while ");
         phone=ph.toString();
+        Log.i("ANA ", "================================================phone" +
+                "" +
+                "9");
             return new String[]{n, phone, m};
     }
 
@@ -97,6 +95,39 @@ public class Database extends SQLiteOpenHelper {
         ContentValues cv= new ContentValues();
         cv.put("LastMonthYear",LastMY);
         db.update("Fee",cv,"Name = ? AND Phone_no = ?",new String[]{name,StringPhone});
+    }
+
+    public void DeleteRecord(String name,Long phone){
+        Log.i("ANA ","==================================Here 0");
+        String StringPhone= Long.toString(phone);
+        Log.i("ANA ","==================================Here 1");
+        db.delete("Student ","Name = ? AND Phone_no = ?",new String[]{name,StringPhone});
+        Log.i("ANA ","==================================Here 2");
+        db.delete("Fee ","Name = ? AND Phone_no = ?",new String[]{name,StringPhone});
+        Log.i("ANA ","==================================Here 3");
+    }
+
+    public int CheckDues(String name,Long phone){
+        int TotalMonthsDue;
+        String data[]= FeeData(name, phone);
+        String LastPaidDate=data[2];
+        String aa=data[0];
+        String Today=add.getCurrentDate();
+        String[] ArrLastPaid =LastPaidDate.split("/");
+
+        String[] ArrToday =Today.split("-");
+        int month1=Integer.parseInt(ArrToday[1]);
+        int month2=Integer.parseInt(ArrLastPaid[0]);
+        int MonthDifference =month1-month2;
+       // if(!(ArrLastPaid[1].equals(ArrToday[2]))){
+        int Year2=Integer.parseInt(ArrLastPaid[1]);
+        /*
+        * trim() to avoid nmber format exception
+         */
+        int Year1=Integer.parseInt(ArrToday[2].trim());
+        int YearDifference=Year1-Year2;
+        TotalMonthsDue=(YearDifference*12)+MonthDifference;
+        return TotalMonthsDue;
     }
 }
 

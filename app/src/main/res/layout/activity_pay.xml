@@ -7,9 +7,7 @@
     tools:context=".Pay">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
         <AbsoluteLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
@@ -22,55 +20,11 @@
                 android:layout_y="417dp"
                 android:text="PAY" />
 
-            <RadioButton
-        android:id="@+id/radioButton12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="250dp"
-        android:layout_y="670dp"
-        android:text="December" />
 
-    <RadioButton
-        android:id="@+id/radioButton10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="244dp"
-        android:layout_y="586dp"
-        android:text="October" />
 
-    <RadioButton
-        android:id="@+id/radioButton8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="140dp"
-        android:layout_y="672dp"
-        android:text="August" />
 
-    <RadioButton
-        android:id="@+id/radioButton7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="137dp"
-        android:layout_y="629dp"
-        android:text="July" />
 
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="137dp"
-        android:layout_y="542dp"
-        android:text="May" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="23dp"
-        android:layout_y="586dp"
-        android:text="February" />
-
-    <EditText
+            <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,87 +48,13 @@
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="119dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="143dp"
-        android:layout_height="36dp"
-        android:layout_x="12dp"
-        android:layout_y="488dp"
-        android:text="Months" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="389dp"
-                android:layout_height="44dp"
-                android:layout_x="16dp"
-                android:layout_y="499dp"
-                android:text="TextView" />
-
-            <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="26dp"
-        android:layout_y="541dp"
-        android:text="January" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="21dp"
-        android:layout_y="627dp"
-        android:text="March" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="25dp"
-        android:layout_y="672dp"
-        android:text="April" />
-
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="137dp"
-        android:layout_y="587dp"
-        android:text="June" />
-
-    <RadioButton
-        android:id="@+id/radioButton9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="243dp"
-        android:layout_y="542dp"
-        android:text="September" />
-
-    <RadioButton
-        android:id="@+id/radioButton11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="248dp"
-        android:layout_y="628dp"
-        android:text="November" />
-
             <Button
-                android:id="@+id/check"
+                android:id="@+id/Check"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_x="143dp"
-                android:layout_y="213dp"
+                android:layout_y="228dp"
                 android:text="CHECK" />
-
-            <EditText
-                android:id="@+id/MonthYear"
-                android:layout_width="305dp"
-                android:layout_height="wrap_content"
-                android:layout_x="60dp"
-                android:layout_y="333dp"
-                android:ems="10"
-                android:hint="Last Month,year upto which paying "
-                android:inputType="date" />
 
             <EditText
                 android:id="@+id/LastPaid"
@@ -186,7 +66,17 @@
                 android:hint="LastPaid"
                 android:inputType="textPersonName"
                 android:text="Name" />
+            <EditText
+                android:id="@+id/MonthYear"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_x="60dp"
+                android:layout_y="333dp"
+                android:ems="10"
+                android:hint="Last Month,year upto which paying "
+                android:inputType="date" />
+
+
         </AbsoluteLayout>
-</ScrollView>
 
 </AbsoluteLayout>

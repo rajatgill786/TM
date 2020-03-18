@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".DeleteStudent">
 
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="148dp"
+            android:layout_y="489dp"
+            android:text="Delete"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="626dp" />
+
+        <EditText
+            android:id="@+id/Phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="86dp"
+            android:layout_y="172dp"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="266dp" />
+
+        <Button
+            android:id="@+id/Check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="155dp"
+            android:layout_y="248dp"
+            android:text="Check"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="378dp" />
+
+        <EditText
+            android:id="@+id/Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="87dp"
+            android:layout_y="81dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="474dp" />
+
+        <CheckBox
+            android:id="@+id/CheckDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="124dp"
+            android:layout_y="415dp"
+            android:text="Delete Record"
+            tools:layout_editor_absoluteX="157dp"
+            tools:layout_editor_absoluteY="553dp" />
+
+        <TextView
+            android:id="@+id/DueMonths"
+            android:layout_width="225dp"
+            android:layout_height="67dp"
+            android:layout_x="86dp"
+            android:layout_y="330dp"
+            app:fontFamily="sans-serif-black" />
+    </AbsoluteLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

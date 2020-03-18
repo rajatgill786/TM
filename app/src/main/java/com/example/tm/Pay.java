@@ -3,6 +3,7 @@ package com.example.tm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +16,11 @@ import com.example.tm.Database.Database;
 public class Pay extends AppCompatActivity {
     Database db;
 
-    Button chk,py;
-    EditText nm,ph,UptoMonthYear,lastPaidMonth;
-    AddStudent CurrrentDate;
+    private Button chk,py;
+    private EditText nm,ph,UptoMonthYear,lastPaidMonth;
 
-    String MYear,name,lastPaid;
-    String [] FeeDetail;
+    String MYear,Ename,lastPaid;
+    //public String [] FeeDetail;
     Long phone;
 
     @Override
@@ -29,22 +29,20 @@ public class Pay extends AppCompatActivity {
         setContentView(R.layout.activity_pay);
         db= new Database(this);
 
-        chk= (Button)findViewById(R.id.check);
+        chk= (Button)findViewById(R.id.Check);
         py= (Button)findViewById(R.id.pay);
 
         nm=(EditText)findViewById(R.id.Name);
         ph=(EditText)findViewById(R.id.Phone);
         UptoMonthYear=(EditText)findViewById(R.id.MonthYear);
         lastPaidMonth=(EditText)findViewById(R.id.LastPaid);
-        CurrrentDate =new AddStudent();
 
         chk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name=nm.getText().toString().trim();
+                Ename=nm.getText().toString().trim();
                 phone=Long.parseLong(ph.getText().toString().trim());
-                FeeDetail = db.FeeData(name,phone);
-                Check(name,phone);
+                Check(Ename,phone);
             }
         });
 
@@ -55,7 +53,7 @@ public class Pay extends AppCompatActivity {
                *place MYear here only otherwise this will always be empty
                */
                 MYear =UptoMonthYear.getText().toString().trim();
-                db.updateFee(name,phone,MYear);
+                db.updateFee(Ename,phone,MYear);
 
             }
         });
@@ -71,11 +69,6 @@ public class Pay extends AppCompatActivity {
             String start[]= db.FeeData(name, phone);
             lastPaid=start[2];
 
-           /* int AdmissionDay=Integer.parseInt(start[0]);
-            int AdmissionMonth=Integer.parseInt(start[1]);
-            String[] CurrDate = CurrrentDate.getCurrentDate().split("-");
-            int CurrentDay=Integer.parseInt(CurrDate[0]);
-            int CurrentMonth=Integer.parseInt(CurrDate[1]);*/
            if(lastPaid.equals("null"))
                lastPaidMonth.setText("No Fee Paid Yet");
            else
@@ -85,14 +78,19 @@ public class Pay extends AppCompatActivity {
 
 
 
-    public  boolean ifRecordExists(String name,Long ph){
-        Long p=Long.parseLong(FeeDetail[1]);
-      if(!(name.equals(FeeDetail[0]) && ph==p)){
+    public final  boolean ifRecordExists(String name,Long ph){
+        Log.i("ANA ", "================================================IF name"+name);
+        Log.i("ANA ", "================================================IF name"+ph);
+        String[] FeeDetail = db.FeeData(name,ph);
+        Log.i("ANA ", "================================================LONG P "+FeeDetail[1]);
+        Long p=Long.parseLong(FeeDetail[1].trim());
+        Log.i("ANA ", "================================================LONG P "+p);
+        if(!(name.equals(FeeDetail[0]) && ph==p)){
+            Log.i("ANA ", "================================================inside IF ");
           Toast.makeText(this,"Student is not registered",Toast.LENGTH_SHORT).show();
           return false;}
-        Toast.makeText(this,"Student is  registered",Toast.LENGTH_SHORT).show();
-      return true;
-
+          Toast.makeText(this,"Student is  registered",Toast.LENGTH_SHORT).show();
+        return true;
     }
 
 }
