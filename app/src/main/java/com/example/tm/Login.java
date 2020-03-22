@@ -9,12 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class login extends AppCompatActivity {
+import com.example.tm.Database.Database;
 
+public class Login extends AppCompatActivity {
+    public static Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        db= new Database(this);
         Button btn =(Button)findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

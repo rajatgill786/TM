@@ -22,10 +22,9 @@ public class CheckDue extends AppCompatActivity {
 
     String nm;
     Long phone_no;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_due);
 
@@ -35,8 +34,6 @@ public class CheckDue extends AppCompatActivity {
         ChkDue=(Button)findViewById(R.id.CheckDues);
 
         db= new Database(this);
-       // py= new Pay();
-
        ChkDue.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,6 +59,14 @@ public class CheckDue extends AppCompatActivity {
     }
 
     public  boolean ifRecordExists(String name,Long ph){
+        String[] FeeDetail = db.FeeData(name,ph);
+        Long p=Long.parseLong(FeeDetail[1].trim());
+        if(!(name.equals(FeeDetail[0]) && ph==p)){
+            return false;}
+        return true;
+    }
+    /*
+       public  boolean ifRecordExists(String name,Long ph){
         Log.i("ANA ", "================================================IF name"+name);
         Log.i("ANA ", "================================================IF name"+ph);
         String[] FeeDetail = db.FeeData(name,ph);
@@ -75,5 +80,6 @@ public class CheckDue extends AppCompatActivity {
       //  Toast.makeText(this,"Student is  registered",Toast.LENGTH_SHORT).show();
         return true;
     }
+     */
 
 }

@@ -3,7 +3,6 @@ package com.example.tm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AddStudent extends AppCompatActivity {
+    EditText editText1,editText2,editText3;
     Pay py;
 
     public AddStudent() {
@@ -28,6 +28,9 @@ public class AddStudent extends AppCompatActivity {
         setContentView(R.layout.activity_add_student);
 
         Button btn=(Button)findViewById(R.id.button1);
+        editText1=(EditText)findViewById(R.id.Name);
+        editText2=(EditText)findViewById(R.id.Phone);
+        editText3=(EditText)findViewById(R.id.Class);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,11 +47,6 @@ public class AddStudent extends AppCompatActivity {
     }
 
     private void addStudent(){
-        EditText editText1=(EditText)findViewById(R.id.Name);
-        EditText editText2=(EditText)findViewById(R.id.Phone);
-        EditText editText3=(EditText)findViewById(R.id.editText3);
-
-
         String name= editText1.getText().toString().trim();
         Long ph=Long.parseLong(editText2.getText().toString().trim());
         String Class= editText3.getText().toString();
@@ -60,7 +58,6 @@ public class AddStudent extends AppCompatActivity {
         db.getWritableDatabase();
 
             db.addStudent(name, ph, Class, getCurrentDate());
-        db.addStudent("100",p,"8","20/03/2019");
 
         /*
          * For first data insertion in Fee table

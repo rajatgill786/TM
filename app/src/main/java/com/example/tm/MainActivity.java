@@ -15,7 +15,7 @@ public static Database db;
         setContentView(R.layout.activity_main);
         db= new Database(this);
 
-        Intent i= new Intent(this,login.class);
+        Intent i= new Intent(this, Login.class);
         startActivity(i);
     }
 }

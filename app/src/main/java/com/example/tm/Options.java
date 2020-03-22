@@ -20,8 +20,6 @@ public class Options extends AppCompatActivity {
         onClickCheckDue();
     }
 
-
-
     private void startAdd(){
         Intent i = new Intent(this, AddStudent.class);
         startActivity(i);
@@ -58,8 +56,6 @@ public class Options extends AppCompatActivity {
         });
 
     }
-
-
     private void onClickPay(){
         Button btn1=(Button)findViewById(R.id.button3);
         btn1.setOnClickListener(new View.OnClickListener() {

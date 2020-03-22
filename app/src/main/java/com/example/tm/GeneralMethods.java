@@ -7,10 +7,8 @@ import com.example.tm.Database.Database;
 
 public class GeneralMethods {
     public  boolean ifRecordExists(String name,Long ph){
-        Log.i("ANA ", "================================================IF name"+name);
-        Log.i("ANA ", "================================================IF name"+ph);
         String[] FeeDetail = MainActivity.db.FeeData(name,ph);
-        Log.i("ANA ", "================================================LONG P "+FeeDetail[1]);
+
         Long p=Long.parseLong(FeeDetail[1].trim());
         Log.i("ANA ", "================================================LONG P "+p);
         if(!(name.equals(FeeDetail[0]) && ph==p)){

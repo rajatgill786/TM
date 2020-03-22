@@ -43,24 +43,14 @@ public class DeleteStudent extends AppCompatActivity {
         delete.setEnabled(false);
         DCheck.setEnabled(false);
 
-        Log.i("ANA ","================================================Variables complete");
-
-
         chk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("ANA ","================================================on click");
                 nm= name.getText().toString().trim();
-                Log.i("ANA ","================================================Variables name"+nm);
                 phone_no=Long.parseLong(phone.getText().toString().trim());
-                Log.i("ANA ","================================================Variables"+phone_no);
-               // Log.i("ANA ","================================================Variables"+py.ifRecordExists(nm,phone_no));
                 if(ifRecordExists(nm,phone_no)) {
-                    Log.i("ANA ", "================================================ppppppppppppppppppppppppp");
                     int DueMonths = db.CheckDues(nm, phone_no);
-                    Log.i("ANA ", "================================================llllllllllllllllllllll");
                     dueMonths.setText("Haven't paid " + DueMonths + " months fee");
-                    Log.i("ANA ", "================================================checking dues");
                     if (DueMonths == 0)
                         delete.setEnabled(true);
                     else
@@ -82,7 +72,6 @@ public class DeleteStudent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 db.DeleteRecord(nm,phone_no);
-                Log.i("ANA ", "================================================Record deleted");
                 deleteToast();
             }
         });
@@ -96,16 +85,12 @@ public class DeleteStudent extends AppCompatActivity {
    }
 
     public  boolean ifRecordExists(String name,Long ph){
-        Log.i("ANA ", "================================================IF name"+name);
-        Log.i("ANA ", "================================================IF name"+ph);
         String[] FeeDetail = db.FeeData(name,ph);
-        Log.i("ANA ", "================================================LONG P "+FeeDetail[1]);
         Long p=Long.parseLong(FeeDetail[1].trim());
-        Log.i("ANA ", "================================================LONG P "+p);
         if(!(name.equals(FeeDetail[0]) && ph==p)){
-            Log.i("ANA ", "================================================inside IF ");
             Toast.makeText(this,"Student is not registered",Toast.LENGTH_SHORT).show();
-            return false;}
+            return false;
+        }
         Toast.makeText(this,"Student is  registered",Toast.LENGTH_SHORT).show();
         return true;
     }
